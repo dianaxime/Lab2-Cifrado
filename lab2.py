@@ -51,4 +51,11 @@ if opcion == "Y":
 else:
     print("\nAdios hacker!")
 
+"""
+i.¿Tuvo que usar “encode” de algo? ¿Sobre qué variables? 
+    Si. Sobre la password y el texto ingresados por el user          
+ii.¿Qué modo de AES usó? ¿Por qué?            
+iii.¿Qué parámetros tuvoque hacer llegar desde sufunción de Encrypta la Decrypt?¿Porqué?
+    La key, el vector de inicialización, la sal y el mensaje encriptado
 
+"""
