@@ -19,9 +19,9 @@ import os
 
 from Crypto.Cipher import AES
 
-IV_SIZE = 16    # 128 bit, fixed for the AES algorithm
-KEY_SIZE = 32   # 256 bit meaning AES-256, can also be 128 or 192 bits
-SALT_SIZE = 16  # This size is arbitrary
+IV_SIZE = 16    # Largo de la cadena de 128 bits, estandarizada para el algoritmo AES
+KEY_SIZE = 32   # Largo de la llave de 256 bit modificado para el algoritmo AES-256 (32*8=256)
+SALT_SIZE = 16  # Tamano recomendado para esta encripccion
 
 #aqui vamos a leer el archivo texto plano
 archivo = open('text.txt','rb')
@@ -32,7 +32,9 @@ archivo.close()
 password = input('Ingrese su password segura')
 #convertir texto de password a bytes
 password= str.encode(password)
+#se genera una cadena de bytes aleatorios (del tamano del salsize)
 salt = os.urandom(SALT_SIZE)
+#se genera el vector de inicializacion y la clave del cifrado
 derived = hashlib.pbkdf2_hmac('sha256', password, salt, 100000,
                               dklen=IV_SIZE + KEY_SIZE)
 #vector inicial con tamano 16
@@ -64,9 +66,16 @@ PASSWORD
 AES_MODE
 IV
 
-Una frase de contraseña no tiene el tamaño apropiado ni se debe usar directamente porque
+Una frase de contraseña no tiene el tamano apropiado ni se debe usar directamente porque
 NO es aleatoria, por tanto se usa el algoritmo PBKDF2 para generar un vector de 
 inicializacion de 128 bits y una clave de 256 bits a partir de la contraseña
 
 iii. ¿Que variables considera las mas importantes dentro de su implementacion? ¿Por que?
+
+Password: porque esta es la que nos permite encriptar y descencriptar el mismo texto, en el caso
+que estas no coincidan en alguno de los pasos el texto a mostrar o encriptar no sera el correcto. 
+IV_SIZE: Es el que nos dicta el tamano del vector inicial porque garantiza que la clave generada sea aleatoria.
+Salt: este recibe como parametro el sat_size que nos indica el tamano de la cadena, el valor de retorno de OS.RANDOM 
+es esta cadena de bytes aleatorios. 
+
 '''
