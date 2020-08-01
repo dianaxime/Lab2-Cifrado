@@ -7,6 +7,7 @@
 
 #Laboratorio 2
 #BLOCK CIPHERS
+#se esta trabajando con un archivo .TXT
 
 '''
 CODIGO REFERNECIADO DE:
