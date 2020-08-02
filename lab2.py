@@ -40,7 +40,8 @@ key = derived[IV_SIZE:] # se obtiene la llave requerida
 cleartext = AES.new(key, AES.MODE_CFB, iv).decrypt(encrypted[SALT_SIZE:]) # el mensaje se desencripta utilizando la sal y key
 
 opcion = input("\n¿Desea desenciptar el mensaje? Y/N: ")
-if opcion == "Y":
+
+if opcion == "Y" or opcion == "y":
     contra = input("\nIngrese el password: ")
     if contra == pass1:
         print('\nMensaje desencriptado: ')
@@ -54,7 +55,11 @@ else:
 """
 i.¿Tuvo que usar “encode” de algo? ¿Sobre qué variables? 
     Si. Sobre la password y el texto ingresados por el user          
-ii.¿Qué modo de AES usó? ¿Por qué?            
+ii.¿Qué modo de AES usó? ¿Por qué? 
+    Se utiliza el modo CFB (Cipher feedback), muy parecido al Cipher block chainning en el cual a cada bloque se le XOR con el cifrado de bloques 
+    anteriores, siendo una función recursiva. Se puede diferenciar facilmente por necesitar un vector de inicialización. A diferencia de CBC, es paralelizable
+    en la desencriptación y permite acceso de lectura aleatorio dado que permite cifrar y transferir algunos valores de texto sin formato al instante, uno 
+    a la vez.       
 iii.¿Qué parámetros tuvoque hacer llegar desde sufunción de Encrypta la Decrypt?¿Porqué?
     La key, el vector de inicialización, la sal y el mensaje encriptado
 
