@@ -11,7 +11,7 @@ Para encriptar un archivo .txt ejecutar  ``` python readtxt.py```
 
 Para desencriptar un archivo .txt ejecutar  ``` python decript.py```
 
-###Demo 2.1
+### Demo 2.1
 [Video](https://youtu.be/mZpPWhRCvYM)
 
 ### Demo 2.2
