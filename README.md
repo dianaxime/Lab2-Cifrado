@@ -7,6 +7,8 @@ Instalar la siguiente libreria, para poder utilizar el método de AES
 ```pip install pycryptodome```
 
 ### Ejecución
+Para parte 2.1 ejecutar ``` python lab2.py```
+
 Para encriptar un archivo .txt ejecutar  ``` python readtxt.py```
 
 Para desencriptar un archivo .txt ejecutar  ``` python decript.py```
